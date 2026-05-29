@@ -1,1 +1,280 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Analytics Dashboard</title>
+</head>
+<body>
+
+<style>
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f8fafc;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+
+  --color-border-tertiary: #e2e8f0;
+
+  --color-text-success: #10b981;
+  --color-text-danger: #ef4444;
+
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: hsl(222.2 84% 4.9%);
+    --color-background-secondary: hsl(217.2 32.6% 17.5%);
+
+    --color-text-primary: hsl(210 40% 98%);
+    --color-text-secondary: hsl(215 20.2% 65.1%);
+
+    --color-border-tertiary: hsl(217.2 32.6% 24%);
+
+    --color-text-success: #34d399;
+    --color-text-danger: #f87171;
+  }
+}
+
+body {
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 1rem;
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+}
+
+.kc {
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.kc:hover {
+  transform: translateY(-2px);
+}
+
+.ka {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 0;
+}
+
+.kl {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.kv {
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.pt {
+  height: 6px;
+  background: var(--color-border-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.pf {
+  height: 100%;
+  border-radius: 3px;
+  width: 0%;
+}
+
+.lg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.lb {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+</style>
+
+<h2 class="sr-only">Analytics overview dashboard with KPI cards, revenue trend, traffic sources, session data, and goal completion metrics.</h2>
+
+<div style="padding:0.75rem 0">
+
+  <!-- Header -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary)">
+    <div>
+      <h2 style="font-size:20px;font-weight:500;margin:0;color:var(--color-text-primary)">Analytics overview</h2>
+      <p style="font-size:12px;color:var(--color-text-secondary);margin:3px 0 0">Q2 · May 2026 · All channels</p>
+    </div>
+    <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:5px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary)">
+      <span style="width:7px;height:7px;border-radius:50%;background:#1D9E75;display:inline-block;box-shadow:0 0 0 2px rgba(29,158,117,0.25)"></span> Live
+    </span>
+  </div>
+
+  <!-- KPI Cards -->
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:1rem">
+    <div class="kc">
+      <div class="ka" style="background:#1D9E75"></div>
+      <div class="kl"><i class="ti ti-trending-up" style="font-size:14px" aria-hidden="true"></i> Revenue</div>
+      <div class="kv">$2.4M</div>
+      <div style="font-size:12px;color:var(--color-text-success);font-weight:500">↑ 18.3% vs Q1</div>
+    </div>
+    <div class="kc">
+      <div class="ka" style="background:#7F77DD"></div>
+      <div class="kl"><i class="ti ti-users" style="font-size:14px" aria-hidden="true"></i> Active users</div>
+      <div class="kv">84.2K</div>
+      <div style="font-size:12px;color:var(--color-text-danger);font-weight:500">↓ 2.1% vs Apr</div>
+    </div>
+    <div class="kc">
+      <div class="ka" style="background:#EF9F27"></div>
+      <div class="kl"><i class="ti ti-target" style="font-size:14px" aria-hidden="true"></i> Conversion</div>
+      <div class="kv">6.7%</div>
+      <div style="font-size:12px;color:var(--color-text-success);font-weight:500">↑ +0.4pp this month</div>
+    </div>
+    <div class="kc">
+      <div class="ka" style="background:#D85A30"></div>
+      <div class="kl"><i class="ti ti-clock" style="font-size:14px" aria-hidden="true"></i> Avg session</div>
+      <div class="kv">4:32</div>
+      <div style="font-size:12px;color:var(--color-text-success);font-weight:500">↑ +22s this week</div>
+    </div>
+  </div>
+
+  <!-- Revenue Trend -->
+  <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;margin-bottom:1rem">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem">
+      <div>
+        <p style="font-weight:500;font-size:14px;margin:0;color:var(--color-text-primary)">Revenue trend</p>
+        <p style="font-size:11px;color:var(--color-text-secondary);margin:2px 0 0">Monthly · Jan–Jun 2026 · USD millions</p>
+      </div>
+      <div style="display:flex;gap:14px">
+        <span class="lg"><span class="lb" style="background:#1D9E75"></span>Actual</span>
+        <span class="lg"><span class="lb" style="background:#7F77DD;opacity:0.6"></span>Target</span>
+      </div>
+    </div>
+    <div style="position:relative;height:155px">
+      <canvas id="lineChart" role="img" aria-label="Line chart showing monthly revenue Jan–Jun 2026, growing from $1.1M to $2.4M against a $2.3M target.">Revenue grew from $1.1M in Jan to $2.4M in Jun, ahead of the $2.3M target.</canvas>
+    </div>
+  </div>
+
+  <!-- Row: Donut + Bar -->
+  <div style="display:grid;grid-template-columns:5fr 7fr;gap:10px;margin-bottom:1rem">
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem">
+      <p style="font-weight:500;font-size:14px;margin:0 0 2px;color:var(--color-text-primary)">Traffic sources</p>
+      <p style="font-size:11px;color:var(--color-text-secondary);margin:0 0 10px">Q2 breakdown · all channels</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px">
+        <span class="lg"><span class="lb" style="background:#1D9E75"></span>Organic 42%</span>
+        <span class="lg"><span class="lb" style="background:#7F77DD"></span>Paid 28%</span>
+        <span class="lg"><span class="lb" style="background:#EF9F27"></span>Social 18%</span>
+        <span class="lg"><span class="lb" style="background:#D85A30"></span>Direct 12%</span>
+      </div>
+      <div style="position:relative;height:130px">
+        <canvas id="donutChart" role="img" aria-label="Donut chart of traffic sources: Organic 42%, Paid 28%, Social 18%, Direct 12%.">Traffic: Organic 42%, Paid 28%, Social 18%, Direct 12%.</canvas>
+      </div>
+    </div>
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem">
+        <div>
+          <p style="font-weight:500;font-size:14px;margin:0;color:var(--color-text-primary)">Weekly sessions</p>
+          <p style="font-size:11px;color:var(--color-text-secondary);margin:2px 0 0">Last 7 days · daily count</p>
+        </div>
+        <span class="lg"><span class="lb" style="background:#378ADD"></span>Sessions</span>
+      </div>
+      <div style="position:relative;height:148px">
+        <canvas id="barChart" role="img" aria-label="Bar chart showing daily sessions Mon–Sun. Peak on Friday at 4200 sessions.">Sessions: Mon 2400, Tue 3100, Wed 2850, Thu 3650, Fri 4200, Sat 3350, Sun 2100.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Goal Completion -->
+  <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem">
+    <p style="font-weight:500;font-size:14px;margin:0 0 2px;color:var(--color-text-primary)">Goal completion</p>
+    <p style="font-size:11px;color:var(--color-text-secondary);margin:0 0 1rem">Current quarter · by metric</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem">
+      <div>
+        <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px"><span>Feature adoption</span><span style="color:var(--color-text-primary);font-weight:500">87%</span></div><div class="pt"><div class="pf" id="p1" style="background:#1D9E75"></div></div></div>
+        <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px"><span>User retention</span><span style="color:var(--color-text-primary);font-weight:500">73%</span></div><div class="pt"><div class="pf" id="p2" style="background:#7F77DD"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px"><span>NPS score</span><span style="color:var(--color-text-primary);font-weight:500">62%</span></div><div class="pt"><div class="pf" id="p3" style="background:#EF9F27"></div></div></div>
+      </div>
+      <div>
+        <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px"><span>Churn reduction</span><span style="color:var(--color-text-primary);font-weight:500">91%</span></div><div class="pt"><div class="pf" id="p4" style="background:#378ADD"></div></div></div>
+        <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px"><span>Revenue goal</span><span style="color:var(--color-text-primary);font-weight:500">78%</span></div><div class="pt"><div class="pf" id="p5" style="background:#D85A30"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:4px"><span>Support satisfaction</span><span style="color:var(--color-text-primary);font-weight:500">94%</span></div><div class="pt"><div class="pf" id="p6" style="background:#1D9E75"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+  const dm = matchMedia('(prefers-color-scheme:dark)').matches;
+  const gc = dm ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+  const tc = dm ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)';
+  const tbg = dm ? '#1c1c28' : '#ffffff';
+  const tt = { backgroundColor:tbg, titleColor:tc, bodyColor:dm?'#e8ecf8':'#1a1a2e', borderColor:dm?'rgba(255,255,255,0.1)':'rgba(0,0,0,0.08)', borderWidth:1, padding:10, cornerRadius:8 };
+  const tk = { color:tc, font:{size:11} };
+
+  // Progress bars
+  const pb = [['p1','87%'],['p2','73%'],['p3','62%'],['p4','91%'],['p5','78%'],['p6','94%']];
+  pb.forEach(([id,w],i) => setTimeout(()=>{const el=document.getElementById(id);el.style.width=w;el.style.transition='width 0.9s cubic-bezier(.22,1,.36,1)';},300+i*90));
+
+  // Line chart
+  const lc = document.getElementById('lineChart').getContext('2d');
+  const lg1 = lc.createLinearGradient(0,0,0,155);
+  lg1.addColorStop(0,'rgba(29,158,117,0.22)');
+  lg1.addColorStop(1,'rgba(29,158,117,0)');
+  const lg2 = lc.createLinearGradient(0,0,0,155);
+  lg2.addColorStop(0,'rgba(127,119,221,0.12)');
+  lg2.addColorStop(1,'rgba(127,119,221,0)');
+  new Chart(lc, {
+    type:'line',
+    data:{
+      labels:['Jan','Feb','Mar','Apr','May','Jun'],
+      datasets:[
+        {label:'Actual',data:[1.10,1.38,1.55,1.72,2.05,2.40],borderColor:'#1D9E75',backgroundColor:lg1,borderWidth:2.5,pointBackgroundColor:'#1D9E75',pointBorderColor:dm?'#111':'#fff',pointBorderWidth:2,pointRadius:4,tension:0.42,fill:true},
+        {label:'Target',data:[1.20,1.45,1.65,1.85,2.10,2.30],borderColor:'rgba(127,119,221,0.7)',backgroundColor:lg2,borderWidth:1.5,pointRadius:0,borderDash:[5,4],tension:0.42,fill:true}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:1400},plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>` ${c.dataset.label}: $${c.parsed.y.toFixed(2)}M`}}},scales:{x:{grid:{color:gc},ticks:tk,border:{display:false}},y:{grid:{color:gc},ticks:{...tk,callback:v=>`$${v}M`},border:{display:false}}}}
+  });
+
+  // Donut
+  new Chart(document.getElementById('donutChart').getContext('2d'), {
+    type:'doughnut',
+    data:{labels:['Organic','Paid','Social','Direct'],datasets:[{data:[42,28,18,12],backgroundColor:['#1D9E75','#7F77DD','#EF9F27','#D85A30'],borderColor:dm?'#1c1c28':'#fff',borderWidth:3,hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:1400},cutout:'65%',plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>` ${c.label}: ${c.parsed}%`}}}}
+  });
+
+  // Bar
+  new Chart(document.getElementById('barChart').getContext('2d'), {
+    type:'bar',
+    data:{labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],datasets:[{label:'Sessions',data:[2400,3100,2850,3650,4200,3350,2100],backgroundColor:'rgba(55,138,221,0.65)',hoverBackgroundColor:'#378ADD',borderRadius:5,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:1100},plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>` ${c.parsed.y.toLocaleString()} sessions`}}},scales:{x:{grid:{display:false},ticks:tk,border:{display:false}},y:{grid:{color:gc},ticks:{...tk,callback:v=>`${Math.round(v/1000)}K`},border:{display:false}}}}
+  });
+</script>
+
+</body>
+</html>
